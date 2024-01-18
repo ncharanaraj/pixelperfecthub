@@ -8,7 +8,7 @@ const Figure = ({ previewURL, tags }) => {
         <img
           src={previewURL}
           alt=""
-          class="object-cover rounded-md w-full h-full"
+          className="object-cover rounded-md w-full h-full"
         />
       </div>
       <div className="flex gap-2 ">

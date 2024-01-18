@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "../utils/constants";
 
-export const useGetImages = () => {
+export const useGetImages = (category) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getImages = async () => {
+  const getImages = async (searchText) => {
     try {
       setLoading(true);
-      const response = await fetch(API_URL);
+      const url = !searchText ? `category=${category}` : `q=${searchText}`;
+      const response = await fetch(`${API_URL}&${url}`);
       const data = await response.json();
       setImages(data.hits);
     } catch (error) {
@@ -20,7 +21,7 @@ export const useGetImages = () => {
 
   useEffect(() => {
     getImages();
-  }, []);
+  }, [category]);
 
-  return { images, loading };
+  return { images, loading, getImages };
 };
