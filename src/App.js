@@ -1,7 +1,8 @@
 import "./App.css";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
-  return <div className="App">Pixel Perfect Hub</div>;
+  return <SearchResults />;
 }
 
 export default App;
