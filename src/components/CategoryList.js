@@ -1,18 +1,14 @@
 import React from "react";
-import { categories } from "../utils/constants";
 
-const CategoryList = ({ setSelectedCategory }) => {
+const CategoryList = ({ category, setSelectedCategory }) => {
   return (
     <>
-      {categories.map((category, index) => (
-        <button
-          key={index}
-          className="px-8 py-2 rounded-sm border"
-          onClick={() => setSelectedCategory(category)}
-        >
-          {category}
-        </button>
-      ))}
+      <button
+        className="px-8 py-2 rounded-sm border"
+        onClick={() => setSelectedCategory(category)}
+      >
+        {category}
+      </button>
     </>
   );
 };

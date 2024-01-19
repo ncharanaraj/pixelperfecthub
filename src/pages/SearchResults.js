@@ -3,6 +3,7 @@ import Figure from "../components/Figure";
 import { useGetImages } from "../hooks/useGetImages";
 import CategoryList from "../components/CategoryList";
 import Search from "../components/Search";
+import { categories } from "../utils/constants";
 
 const SearchResults = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -22,7 +23,13 @@ const SearchResults = () => {
         {searchResultsText && <div>Results: {searchResultsText}</div>}
       </div>
       <div className="flex gap-2 overflow-x-scroll mb-8">
-        <CategoryList setSelectedCategory={setSelectedCategory} />
+        {categories.map(({ id, categoryName }) => (
+          <CategoryList
+            key={id}
+            category={categoryName}
+            setSelectedCategory={setSelectedCategory}
+          />
+        ))}
       </div>
       <div className="flex flex-wrap justify-center gap-8">
         {loading ? (
