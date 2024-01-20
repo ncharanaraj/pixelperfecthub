@@ -11,7 +11,7 @@ const Search = ({
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          getImages(searchImageText);
+          searchImageText && getImages(searchImageText);
           setSearchResultsText(searchImageText);
           setSearchImageText("");
         }}

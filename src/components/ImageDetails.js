@@ -78,12 +78,18 @@ const ImageDetails = ({
       <div className="p-4">
         <div className="flex gap-4">
           <div className="w-3/4">
-            <img src={webformatURL} alt="" className="rounded-lg" />
+            <img
+              src={webformatURL}
+              alt=""
+              className="rounded-lg"
+              width="80%"
+              height="20%"
+            />
           </div>
           <div className="w-1/4">
             <div>
               <h3>Download</h3>
-              <div>
+              <div className="flex flex-col gap-4">
                 <div className="border rounded-md">
                   <SizeSelector
                     size="Small"
@@ -110,7 +116,7 @@ const ImageDetails = ({
 
                 <button
                   onClick={() => imageDownloader(imageSizeURL, "Image")}
-                  className="bg-[#487d48] py-2 px-4 rounded-sm text-white text-xs"
+                  className="bg-[#487d48] py-2 px-4 rounded-sm text-white text-xs "
                 >
                   Download for free!
                 </button>
