@@ -1,8 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
-import Background from "../components/Background";
-import BlurContainer from "../components/BlurContainer";
-import Search from "../components/Search";
+import { Header, Background, BlurContainer, Search } from "../components";
 
 const LandingPage = () => {
   return (

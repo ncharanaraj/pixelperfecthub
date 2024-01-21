@@ -1,11 +1,13 @@
+import {
+  Background,
+  Header,
+  BlurContainer,
+  Search,
+  CategoryList,
+  Figure,
+} from "../components";
 import React from "react";
-import Figure from "../components/Figure";
-import Search from "../components/Search";
-import Header from "../components/Header";
 import { categories } from "../utils/constants";
-import Background from "../components/Background";
-import CategoryList from "../components/CategoryList";
-import BlurContainer from "../components/BlurContainer";
 import { useSearch } from "../context/searchContext";
 
 const SearchResults = () => {

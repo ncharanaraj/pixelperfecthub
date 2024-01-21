@@ -1,9 +1,9 @@
-import { CheckCircle2, Circle, XSquare } from "lucide-react";
 import React, { useState } from "react";
 import Badge from "./Badge";
 import { formatTags } from "../utils/formatTags";
 import { getImageURL } from "../utils/getImageURL";
 import { imageDownloader } from "../utils/imageDownloader ";
+import { CheckCircle2, Circle, XSquare } from "lucide-react";
 
 const SizeSelector = ({
   size,
@@ -76,14 +76,14 @@ const ImageDetails = ({
         <XSquare onClick={() => setShowModal(false)} />
       </div>
       <div className="p-4">
-        <div className="flex gap-4">
-          <div className="w-3/4">
+        <div className="flex gap-8">
+          <div className="w-2/3 h-96">
             <img
               src={webformatURL}
               alt=""
-              className="rounded-lg"
-              width="80%"
-              height="20%"
+              className="rounded-lg w-full h-full"
+              // width="80%"
+              // height="20%"
             />
           </div>
           <div className="w-1/4">
