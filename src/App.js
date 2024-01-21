@@ -1,8 +1,13 @@
 import "./App.css";
-import SearchResults from "./pages/SearchResults";
+import { Outlet } from "react-router-dom";
+import { SearchProvider } from "./context/searchContext";
 
 function App() {
-  return <SearchResults />;
+  return (
+    <SearchProvider>
+      <Outlet />;
+    </SearchProvider>
+  );
 }
 
 export default App;

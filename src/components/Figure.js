@@ -23,7 +23,7 @@ const Figure = ({ id, previewURL, tags }) => {
           }}
         />
       </div>
-      <div className="flex gap-2 ">
+      <div className="flex gap-2 capitalize">
         {tagsList.map(({ id, name }) => (
           <Badge key={id} tag={name} />
         ))}
