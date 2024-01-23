@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { supabase } from "../backend/client";
 import { useAuth } from "../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { isLoginForm } = useAuth();
+  const { isLoginForm, setToken, setUser } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -22,23 +23,42 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const { data, error } = isLoginForm
-      //   ? await supabase.auth.signUp({
-      //       ...formData,
-      //       options: {
-      //         data: {
-      //           fullName: formData.fullName,
-      //         },
-      //       },
-      //     })
-      //   :
-      const { data, error } = await supabase.auth.signInWithPassword({
-        ...formData,
-      });
+      let output;
 
-      console.log(data);
+      if (isLoginForm) {
+        output = await supabase.auth.signUp({
+          email: formData.email,
+          password: formData.password,
+          options: {
+            data: {
+              fullName: formData.fullName,
+            },
+          },
+        });
+      } else {
+        output = await supabase.auth.signInWithPassword({
+          email: formData.email,
+          password: formData.password,
+        });
+      }
 
-      error ? console.error(error) : navigate("/");
+      const { data, error } = output;
+      const { user, session } = data;
+
+      if (session !== null) {
+        const redirectPath = location.state?.path || "/";
+        navigate(redirectPath, { replace: true });
+      } else {
+        navigate("/", { replace: true });
+      }
+
+      setToken(session);
+      setUser(user);
+      sessionStorage.setItem("loginDetails", JSON.stringify(data));
+
+      if (error) {
+        console.error(error);
+      }
     } catch (error) {
       console.error(error);
     }

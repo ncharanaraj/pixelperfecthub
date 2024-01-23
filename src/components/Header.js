@@ -2,16 +2,17 @@ import React from "react";
 import BlurContainer from "./BlurContainer";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/authContext";
+import { CircleUserRound, LogOut } from "lucide-react";
 
 const Header = () => {
-  const { isLoginForm, setIsLoginForm } = useAuth();
+  const { setIsLoginForm, token } = useAuth();
   return (
     <BlurContainer classNames={["w-full"]}>
-      <nav className="flex">
+      <nav className="flex items-center">
         <Link to="/" className="flex-1 font-extrabold text-2xl">
           PixelPerfectHub
         </Link>
-        {!isLoginForm ? (
+        {!token ? (
           <>
             <Link to="/login" className="mr-8">
               Login
@@ -26,7 +27,14 @@ const Header = () => {
           </>
         ) : (
           <>
-            <p>Logout</p>
+            <Link to="/profile" className="mr-4 flex flex-col items-center">
+              <CircleUserRound />
+              <span className="text-xs">Profile</span>
+            </Link>
+            <button className="flex flex-col items-center">
+              <LogOut />
+              <span className="text-xs">Logout</span>
+            </button>
           </>
         )}
       </nav>
