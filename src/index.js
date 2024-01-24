@@ -7,6 +7,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { LandingPage, SearchResults, Login } from "./pages";
 import Profile from "./components/Profile";
 import RequireAuth from "./components/RequireAuth";
+import History from "./components/History";
+import UserAccount from "./components/UserAccount";
 
 const router = createBrowserRouter([
   {
@@ -34,9 +36,19 @@ const router = createBrowserRouter([
         path: "/profile",
         element: (
           <RequireAuth>
-            <Profile />
+            <UserAccount />
           </RequireAuth>
         ),
+        children: [
+          {
+            path: "",
+            element: <Profile />,
+          },
+          {
+            path: "history",
+            element: <History />,
+          },
+        ],
       },
     ],
   },
