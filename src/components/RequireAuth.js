@@ -8,7 +8,7 @@ const RequireAuth = ({ children }) => {
   return token ? (
     children
   ) : (
-    <Navigate to="/login" state={{ path: location.pathname }} />
+    <Navigate to="/login" state={{ path: location.pathname }} replace />
   );
 };
 

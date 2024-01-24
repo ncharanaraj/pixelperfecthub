@@ -4,7 +4,7 @@ import { useAuth } from "../context/authContext";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { isLoginForm, setToken, setUser } = useAuth();
+  const { isLoginForm, setToken, setCurrentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [formData, setFormData] = useState({
@@ -43,18 +43,16 @@ const Login = () => {
       }
 
       const { data, error } = output;
-      const { user, session } = data;
 
-      if (session !== null) {
+      if (data) {
+        const { session, user } = data;
+        setToken(session);
+        setCurrentUser(user);
         const redirectPath = location.state?.path || "/";
         navigate(redirectPath, { replace: true });
       } else {
         navigate("/", { replace: true });
       }
-
-      setToken(session);
-      setUser(user);
-      sessionStorage.setItem("loginDetails", JSON.stringify(data));
 
       if (error) {
         console.error(error);

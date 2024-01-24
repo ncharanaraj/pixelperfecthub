@@ -5,7 +5,7 @@ import { useAuth } from "../context/authContext";
 import { CircleUserRound, LogOut } from "lucide-react";
 
 const Header = () => {
-  const { setIsLoginForm, token } = useAuth();
+  const { setIsLoginForm, token, handleLogout } = useAuth();
   return (
     <BlurContainer classNames={["w-full"]}>
       <nav className="flex items-center">
@@ -31,10 +31,14 @@ const Header = () => {
               <CircleUserRound />
               <span className="text-xs">Profile</span>
             </Link>
-            <button className="flex flex-col items-center">
+            <Link
+              to="/"
+              onClick={handleLogout}
+              className="flex flex-col items-center"
+            >
               <LogOut />
               <span className="text-xs">Logout</span>
-            </button>
+            </Link>
           </>
         )}
       </nav>
