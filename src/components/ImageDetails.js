@@ -4,6 +4,8 @@ import { formatTags } from "../utils/formatTags";
 import { getImageURL } from "../utils/getImageURL";
 import { imageDownloader } from "../utils/imageDownloader ";
 import { CheckCircle2, Circle, XSquare } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 const SizeSelector = ({
   size,
@@ -61,6 +63,8 @@ const ImageDetails = ({
 }) => {
   const tagsList = formatTags(tags);
   const [selectedSize, setSelectedSize] = useState("Small");
+  const { token } = useAuth;
+  const navigate = useNavigate();
 
   const imageSizeURL = getImageURL(
     selectedSize,
@@ -68,6 +72,10 @@ const ImageDetails = ({
     webformatURL,
     largeImageURL
   );
+
+  const handleDownload = () => {
+    token ? imageDownloader(imageSizeURL, "Image") : navigate("/login");
+  };
 
   return (
     <div className="w-3/4 h-3/4  bg-white rounded-lg">
@@ -115,7 +123,7 @@ const ImageDetails = ({
                 </div>
 
                 <button
-                  onClick={() => imageDownloader(imageSizeURL, "Image")}
+                  onClick={handleDownload}
                   className="bg-[#487d48] py-2 px-4 rounded-sm text-white text-xs "
                 >
                   Download for free!
