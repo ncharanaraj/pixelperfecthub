@@ -7,7 +7,7 @@ function App() {
   return (
     <AuthProvider>
       <SearchProvider>
-        <Outlet />;
+        <Outlet />
       </SearchProvider>
     </AuthProvider>
   );

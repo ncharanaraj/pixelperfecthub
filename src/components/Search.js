@@ -23,7 +23,7 @@ const Search = () => {
           setSearchImageText("");
           navigate("/searchResults");
         }}
-        className="flex mx-2"
+        className="flex mx-2 w-72 md:w-full"
       >
         <input
           type="text"

@@ -5,7 +5,7 @@ const LandingPage = () => {
   return (
     <Background classNames={["h-screen"]}>
       <Header />
-      <div className="font-bold text-7xl max-w-4xl text-center leading-snug">
+      <div className="font-bold md:text-7xl text-5xl leading-tight max-w-4xl text-center md:leading-snug">
         Discover over 2,000,000 free Stock Images
       </div>
       <BlurContainer classNames={["flex", "items-center", "mt-8"]}>

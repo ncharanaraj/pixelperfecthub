@@ -9,12 +9,15 @@ const Header = () => {
   return (
     <BlurContainer classNames={["w-full"]}>
       <nav className="flex items-center">
-        <Link to="/" className="flex-1 font-extrabold text-2xl">
+        <Link
+          to="/"
+          className="flex-1 md:font-extrabold font-bold md:text-2xl text-lg"
+        >
           PixelPerfectHub
         </Link>
         {!token ? (
           <>
-            <Link to="/login" className="mr-8">
+            <Link to="/login" className="md:mr-8 mr-3">
               Login
             </Link>
             <Link
