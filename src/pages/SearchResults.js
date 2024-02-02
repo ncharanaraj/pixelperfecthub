@@ -14,6 +14,8 @@ const SearchResults = () => {
   const { searchResultsText, setSelectedCategory, loading, images } =
     useSearch();
 
+  console.log(images);
+
   return (
     <div>
       <Background classNames={["h-80"]}>
@@ -38,11 +40,15 @@ const SearchResults = () => {
           />
         ))}
       </div>
-      <div className="flex flex-wrap justify-between gap-y-6 px-8">
+      <div className="p-8">
         {loading ? (
           <div>loading...</div>
         ) : (
-          images.map((image) => <Figure key={image.id} {...image} />)
+          <div className="md:columns-3 columns-1 gap-8 ">
+            {images.map((image) => (
+              <Figure key={image.id} {...image} />
+            ))}
+          </div>
         )}
       </div>
     </div>
