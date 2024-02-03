@@ -34,9 +34,9 @@ const SizeSelector = ({
 
 const Info = ({ title, description }) => {
   return (
-    <div>
+    <div className="w-1/4">
       <h6 className="font-thin">{title}</h6>
-      <p className="font-medium">{description}</p>
+      <p className="font-bold">{description}</p>
     </div>
   );
 };
@@ -78,25 +78,24 @@ const ImageDetails = ({
   };
 
   return (
-    <div className="w-3/4 h-3/4  bg-white rounded-lg">
+    <div className=" bg-white rounded-lg  w-full md:max-w-3xl md:h-auto h-full relative overflow-y-scroll">
       <div className="flex justify-between bg-gray-100 p-4 rounded-t-lg">
         <p>Preview ID: {id} </p>
         <XSquare onClick={() => setShowModal(false)} />
       </div>
-      <div className="p-4">
-        <div className="flex gap-8">
-          <div className="w-2/3 h-96">
-            <img
-              src={webformatURL}
-              alt=""
-              className="rounded-lg w-full h-full"
-              // width="80%"
-              // height="20%"
-            />
+      <div className="p-4 ">
+        <div className="flex md:flex-row flex-col gap-4">
+          <div className="w-1/2">
+            <img src={webformatURL} alt="" className="rounded-lg max-w-full" />
+            <div className="flex gap-2 items-center py-2">
+              Tags:{" "}
+              {tagsList &&
+                tagsList.map(({ id, name }) => <Badge key={id} tag={name} />)}
+            </div>
           </div>
-          <div className="w-1/4">
+          <div className="md:w-1/2">
             <div>
-              <h3>Download</h3>
+              <h3 className="mb-2 text-lg font-semibold">Download</h3>
               <div className="flex flex-col gap-4">
                 <div className="border rounded-md">
                   <SizeSelector
@@ -130,9 +129,9 @@ const ImageDetails = ({
                 </button>
               </div>
             </div>
-            <div>
-              <h3>Information</h3>
-              <div className="flex flex-wrap gap-2">
+            <div className="my-4 w-full">
+              <h3 className="mb-2 text-lg font-semibold">Information</h3>
+              <div className="flex flex-wrap gap-2 justify-between">
                 <Info title="User" description={user} />
                 <Info title="User ID" description={user_id} />
                 <Info title="Type" description={type} />
@@ -142,11 +141,6 @@ const ImageDetails = ({
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex gap-2 items-center py-2">
-          Tags:{" "}
-          {tagsList &&
-            tagsList.map(({ id, name }) => <Badge key={id} tag={name} />)}
         </div>
       </div>
     </div>
