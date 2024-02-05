@@ -78,7 +78,7 @@ const ImageDetails = ({
   };
 
   return (
-    <div className=" bg-white rounded-lg  w-full md:max-w-3xl md:h-auto h-full relative overflow-y-scroll">
+    <div className=" bg-white rounded-lg  w-full md:max-w-3xl md:h-auto h-full relative md:overflow-auto overflow-y-scroll">
       <div className="flex justify-between bg-gray-100 p-4 rounded-t-lg">
         <p>Preview ID: {id} </p>
         <XSquare onClick={() => setShowModal(false)} />
